@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Fairu! ❤️ Barakallahu Fi Umrik</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts including Arabic Amiri, Reem Kufi, Playfair Display & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@400;500;600;700;800&family=Reem+Kufi:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepburgundy: '#200511',
+                        plumdark: '#300a1c',
+                        rosegold: {
+                            50: '#fff5f7',
+                            100: '#ffe3e8',
+                            200: '#ffccd6',
+                            300: '#fba5b5',
+                            400: '#f7738d',
+                            500: '#eb4266',
+                            600: '#d7254e',
+                            700: '#b41a3d',
+                            800: '#8a1532',
+                            900: '#5c0b1f',
+                        },
+                        champagne: '#fce8c7',
+                        ambergold: '#fbbf24',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        cursive: ['"Great Vibes"', 'cursive'],
+                        sans: ['Poppins', 'sans-serif'],
+                        arabic: ['"Amiri"', 'serif'],
+                        kufi: ['"Reem Kufi"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #1d0714 0%, #2e0c1f 50%, #15030e 100%);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* High-contrast Glassmorphism Cards for Dark Theme */
+        .glass-card {
+            background: rgba(30, 8, 20, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(251, 191, 36, 0.35);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Light Card for Letter Section */
+        .glass-card-light {
+            background: #ffffff;
+            border: 2px solid #fbcfe8;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            color: #1a0510;
+        }
+
+        /* Subtle Islamic Geometric Pattern overlay */
+        .islamic-pattern {
+            background-image: radial-gradient(rgba(251, 191, 36, 0.12) 1.5px, transparent 1.5px), radial-gradient(rgba(244, 114, 182, 0.12) 1.5px, transparent 1.5px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+        }
+
+        /* Floating Hearts Animation */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            20% { opacity: 0.9; }
+            100% {
+                transform: translateY(-20vh) scale(1.2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .floating-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp 8s linear infinite;
+        }
+
+        /* High-visibility Text Shadows */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(244, 114, 182, 0.8), 0 0 35px rgba(251, 191, 36, 0.5);
+        }
+
+        .text-shadow-strong {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+        }
+
+        /* 3D Flip Card Styles */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .flip-card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Candle Flame Flicker Animation */
+        @keyframes flicker {
+            0%, 100% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
+            20% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+            40% { transform: scale(0.9) rotate(-2deg); opacity: 0.85; }
+            60% { transform: scale(1.08) rotate(1deg); opacity: 1; }
+            80% { transform: scale(0.92) rotate(-1deg); opacity: 0.9; }
+        }
+
+        .flame {
+            animation: flicker 0.6s infinite ease-in-out;
+            transform-origin: center bottom;
+            filter: drop-shadow(0 0 10px #f97316);
+        }
+
+        /* Envelope Interactivity */
+        .envelope {
+            position: relative;
+            background: #9f1239;
+            transition: all 0.5s ease;
+        }
+        .envelope-flap {
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 110px solid #881337;
+            transform-origin: top;
+            transition: transform 0.6s ease 0.2s, z-index 0.2s;
+            z-index: 5;
+        }
+        @media (min-width: 640px) {
+            .envelope-flap {
+                border-left-width: 200px;
+                border-right-width: 200px;
+                border-top-width: 150px;
+            }
+        }
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        /* High Visibility Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #15030e; }
+        ::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 5px; }
+    </style>
+</head>
+<body class="relative min-h-screen islamic-pattern">
+
+    <!-- Floating Background Particles -->
+    <div id="hearts-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+    <div class="fixed top-5 right-5 z-50">
+        <button id="audio-toggle-btn" onclick="toggleAudio()" class="bg-gradient-to-r from-rose-900 via-pink-900 to-amber-900 px-4 py-3 rounded-full flex items-center space-x-3 text-white hover:scale-105 transition duration-300 shadow-2xl border-2 border-amber-400">
+            <i id="audio-icon" class="fas fa-music text-amber-300 text-lg group-hover:animate-bounce"></i>
+            <span id="audio-label" class="text-xs font-bold tracking-wider uppercase text-amber-200">Play Soft Melody</span>
+        </button>
+    </div>
+
+    <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-slate-950/90 px-6 py-3 rounded-full flex items-center space-x-5 sm:space-x-8 text-xs font-bold shadow-2xl border-2 border-amber-400/60 text-white">
+        <a href="#hero" class="hover:text-amber-300 transition flex flex-col items-center"><i class="fas fa-moon mb-1 sm:hidden text-amber-400"></i><span>Home</span></a>
+        <a href="#duas" class="hover:text-amber-300 transition flex flex-col items-center"><i class="fas fa-hands-praying mb-1 sm:hidden text-amber-400"></i><span>Duas</span></a>
+        <a href="#timeline" class="hover:text-amber-300 transition flex flex-col items-center"><i class="fas fa-clock mb-1 sm:hidden text-amber-400"></i><span>Story</span></a>
+        <a href="#reasons" class="hover:text-amber-300 transition flex flex-col items-center"><i class="fas fa-th-large mb-1 sm:hidden text-amber-400"></i><span>10 Reasons</span></a>
+        <a href="#cake" class="hover:text-amber-300 transition flex flex-col items-center"><i class="fas fa-birthday-cake mb-1 sm:hidden text-amber-400"></i><span>Wish</span></a>
+        <a href="#letter" class="hover:text-amber-300 transition flex flex-col items-center"><i class="fas fa-envelope mb-1 sm:hidden text-amber-400"></i><span>Letter</span></a>
+    </nav>
+
+    <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-12 pb-24 relative z-10">
+        
+        <!-- Bismillah Calligraphy (High Contrast Gold) -->
+        <div class="mb-6">
+            <p class="font-arabic text-3xl sm:text-5xl text-amber-300 tracking-wide font-bold leading-relaxed text-shadow-strong">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            </p>
+            <p class="text-xs sm:text-sm text-amber-200 uppercase tracking-widest font-semibold mt-1 bg-black/40 px-4 py-1 rounded-full border border-amber-400/30">In the name of Allah, the Most Gracious, the Most Merciful</p>
+        </div>
+
+        <div class="inline-flex items-center space-x-2 mb-4 px-5 py-2 rounded-full bg-rose-950/80 text-amber-300 text-xs sm:text-sm tracking-widest uppercase font-bold border-2 border-amber-400/50 shadow-lg">
+            <i class="fas fa-star-and-crescent text-amber-300"></i>
+            <span>October 10th - Blessed Birthday of Fairu</span>
+            <i class="fas fa-star-and-crescent text-amber-300"></i>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="font-cursive text-6xl sm:text-8xl md:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-200 via-amber-200 to-rose-200 text-glow leading-tight mb-2">
+            Happy Birthday Fairu!
+        </h1>
+
+        <!-- Arabic Greeting "Barakallahu Fi Umrik" -->
+        <div class="my-4 bg-slate-950/60 px-6 py-4 rounded-2xl border border-amber-400/40 max-w-lg">
+            <p class="font-arabic text-3xl sm:text-4xl text-amber-300 font-bold">
+                بَارَكَ اللَّهُ فِي عُمْرِكِ
+            </p>
+            <p class="font-serif italic text-base sm:text-xl text-white font-semibold mt-2">
+                "May Allah bless you in your age, health, happiness, and faith."
+            </p>
+        </div>
+        
+        <p class="font-sans text-sm sm:text-base text-amber-100 max-w-xl mb-8 font-medium px-4 leading-relaxed bg-black/40 py-2 rounded-xl">
+            "To my beloved wife Fairu, whom Allah granted me as the peace of my heart and the joy of my soul."
+        </p>
+
+        <!-- Dynamic Countdown Timer Box -->
+        <div class="w-full max-w-2xl mb-10">
+            <p id="countdown-heading" class="text-xs sm:text-sm uppercase tracking-widest text-amber-300 mb-3 font-extrabold bg-slate-950/80 py-1.5 px-4 rounded-full inline-block border border-amber-400/40">Counting down to October 10th</p>
+            <div class="grid grid-cols-4 gap-2 sm:gap-4 glass-card p-4 sm:p-6 rounded-3xl border-2 border-amber-400/60 shadow-2xl">
+                <div class="flex flex-col items-center">
+                    <span id="cd-days" class="font-serif text-3xl sm:text-5xl font-extrabold text-amber-300">00</span>
+                    <span class="text-xs font-bold text-white uppercase tracking-widest mt-1">Days</span>
+                </div>
+                <div class="flex flex-col items-center border-l-2 border-amber-400/30">
+                    <span id="cd-hours" class="font-serif text-3xl sm:text-5xl font-extrabold text-amber-300">00</span>
+                    <span class="text-xs font-bold text-white uppercase tracking-widest mt-1">Hours</span>
+                </div>
+                <div class="flex flex-col items-center border-l-2 border-amber-400/30">
+                    <span id="cd-minutes" class="font-serif text-3xl sm:text-5xl font-extrabold text-amber-300">00</span>
+                    <span class="text-xs font-bold text-white uppercase tracking-widest mt-1">Mins</span>
+                </div>
+                <div class="flex flex-col items-center border-l-2 border-amber-400/30">
+                    <span id="cd-seconds" class="font-serif text-3xl sm:text-5xl font-extrabold text-amber-300">00</span>
+                    <span class="text-xs font-bold text-white uppercase tracking-widest mt-1">Secs</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#duas" class="bg-gradient-to-r from-rose-700 via-pink-800 to-amber-700 text-white font-bold px-8 py-3.5 rounded-full flex items-center space-x-3 transition duration-300 hover:scale-105 border-2 border-amber-300 shadow-2xl">
+            <span>Read My Duas For You</span>
+            <i class="fas fa-hands-praying text-amber-300 text-base"></i>
+        </a>
+    </section>
+
+    <section id="duas" class="py-20 px-4 max-w-5xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <span class="text-xs font-bold text-amber-300 uppercase tracking-widest bg-black/60 px-4 py-1.5 rounded-full border border-amber-400/30">Duas & Blessings</span>
+            <h2 class="font-cursive text-5xl sm:text-6xl text-amber-200 mt-3 mb-2 font-bold drop-shadow-md">Heartfelt Prayers for Fairu</h2>
+            <p class="text-white font-medium text-sm sm:text-base max-w-lg mx-auto">Quranic & heartfelt supplications for my precious wife on her special day.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Dua 1: Surah Furqan 74 -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-amber-400/50 flex flex-col justify-between hover:border-amber-300 transition">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center text-slate-950 font-bold">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-amber-300">Dua for Our Marriage</h3>
+                    </div>
+                    <p class="font-arabic text-2xl text-right text-amber-200 font-bold leading-loose mb-3">
+                        "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ"
+                    </p>
+                    <p class="text-sm sm:text-base text-white font-semibold italic font-serif leading-relaxed mb-3 bg-black/40 p-3 rounded-xl border border-white/10">
+                        "Our Lord, grant us from among our wives and offspring comfort to our eyes..." (Surah Al-Furqan 25:74)
+                    </p>
+                </div>
+                <p class="text-xs sm:text-sm text-pink-100 font-medium pt-4 border-t border-white/20">
+                    Fairu, you truly are the ultimate comfort and coolness of my eyes every day.
+                </p>
+            </div>
+
+            <!-- Dua 2: Mawaddah & Rahmah -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-amber-400/50 flex flex-col justify-between hover:border-amber-300 transition">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center text-slate-950 font-bold">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-amber-300">Love & Mercy (Mawaddah)</h3>
+                    </div>
+                    <p class="font-arabic text-2xl text-right text-amber-200 font-bold leading-loose mb-3">
+                        "وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً"
+                    </p>
+                    <p class="text-sm sm:text-base text-white font-semibold italic font-serif leading-relaxed mb-3 bg-black/40 p-3 rounded-xl border border-white/10">
+                        "And He placed between you affection and mercy..." (Surah Ar-Rum 30:21)
+                    </p>
+                </div>
+                <p class="text-xs sm:text-sm text-pink-100 font-medium pt-4 border-t border-white/20">
+                    I pray Allah continuously increases the love, mercy, and gentleness between us.
+                </p>
+            </div>
+
+            <!-- Dua 3: Health & Barakah -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-amber-400/50 flex flex-col justify-between hover:border-amber-300 transition">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center text-slate-950 font-bold">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-amber-300">Protection & Good Health</h3>
+                    </div>
+                    <p class="text-sm sm:text-base text-white font-medium leading-relaxed mb-3 bg-black/40 p-3 rounded-xl border border-white/10">
+                        "O Allah, I ask You to grant Fairu continuous good health, peace of mind, protection from all harm, and abundance in her provisions (Rizq)."
+                    </p>
+                </div>
+                <p class="text-xs sm:text-sm font-bold text-amber-300 pt-4 border-t border-white/20">
+                    Allahumma Amin 🤲
+                </p>
+            </div>
+
+            <!-- Dua 4: Togetherness in Jannah -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-amber-400/50 flex flex-col justify-between hover:border-amber-300 transition">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center text-slate-950 font-bold">
+                            <i class="fas fa-kaaba"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-amber-300">Togetherness in Jannah</h3>
+                    </div>
+                    <p class="text-sm sm:text-base text-white font-medium leading-relaxed mb-3 bg-black/40 p-3 rounded-xl border border-white/10">
+                        "My biggest wish to Allah is that just as He united us in this Dunya, He unites us together hand in hand in Jannat al-Firdaus forever."
+                    </p>
+                </div>
+                <p class="text-xs sm:text-sm font-bold text-amber-300 pt-4 border-t border-white/20">
+                    Dunya to Akhirah, Always ❤️
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="timeline" class="py-20 px-4 max-w-5xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="font-cursive text-5xl sm:text-6xl text-amber-200 mb-2 font-bold">Our Blessed Journey</h2>
+            <p class="text-white font-semibold text-sm sm:text-base max-w-md mx-auto">Every milestone with you Fairu is a divine blessing from Allah.</p>
+        </div>
+
+        <div class="relative border-l-4 border-amber-400 ml-4 md:ml-1/2 space-y-12">
+            
+            <!-- Timeline Item 1 -->
+            <div class="relative pl-8 md:pl-0 group">
+                <div class="absolute -left-[18px] top-1 w-9 h-9 rounded-full bg-rose-600 border-4 border-slate-950 flex items-center justify-center text-amber-300 text-xs shadow-xl group-hover:scale-125 transition">
+                    <i class="fas fa-star-and-crescent"></i>
+                </div>
+                <div class="glass-card p-6 rounded-2xl md:w-[calc(50%-30px)] md:ml-auto hover:border-amber-300 transition duration-300 cursor-pointer" onclick="openModal('When Allah Wrote Our Destiny', 'The day Allah brought you into my life was the beginning of my favorite prayer being answered. Your radiant smile filled my soul with instant peace, Fairu.')">
+                    <span class="text-xs font-extrabold text-amber-300 uppercase tracking-widest bg-rose-950 px-3 py-1 rounded-full border border-amber-400/40">Chapter I</span>
+                    <h3 class="font-serif text-2xl font-bold text-white mt-2 mb-2">The Written Blessing (Naseeb)</h3>
+                    <p class="text-pink-100 text-sm font-medium leading-relaxed">It started with Allah’s perfect timing, bringing us together to begin our beautiful story...</p>
+                    <div class="mt-4 inline-flex items-center text-xs text-amber-300 font-bold group-hover:translate-x-1 transition">
+                        <span>Read memory</span> <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="relative pl-8 md:pl-0 group">
+                <div class="absolute -left-[18px] top-1 w-9 h-9 rounded-full bg-rose-600 border-4 border-slate-950 flex items-center justify-center text-amber-300 text-xs shadow-xl group-hover:scale-125 transition">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="glass-card p-6 rounded-2xl md:w-[calc(50%-30px)] md:mr-auto hover:border-amber-300 transition duration-300 cursor-pointer" onclick="openModal('Our Magical First Moments', 'Talking with you felt like finding a home I never knew I was looking for. Every second spent together confirmed you were the one.')">
+                    <span class="text-xs font-extrabold text-amber-300 uppercase tracking-widest bg-rose-950 px-3 py-1 rounded-full border border-amber-400/40">Chapter II</span>
+                    <h3 class="font-serif text-2xl font-bold text-white mt-2 mb-2">First Sweet Conversations</h3>
+                    <p class="text-pink-100 text-sm font-medium leading-relaxed">Nervous smiles, endless talks, and realizing that Allah created you specifically for me.</p>
+                    <div class="mt-4 inline-flex items-center text-xs text-amber-300 font-bold group-hover:translate-x-1 transition">
+                        <span>Read memory</span> <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="relative pl-8 md:pl-0 group">
+                <div class="absolute -left-[18px] top-1 w-9 h-9 rounded-full bg-rose-600 border-4 border-slate-950 flex items-center justify-center text-amber-300 text-xs shadow-xl group-hover:scale-125 transition">
+                    <i class="fas fa-ring"></i>
+                </div>
+                <div class="glass-card p-6 rounded-2xl md:w-[calc(50%-30px)] md:ml-auto hover:border-amber-300 transition duration-300 cursor-pointer" onclick="openModal('Sacred Bond of Nikah', 'Completing half our Deen together was the proudest moment of my life. Holding your hand with Allah as our witness was my happiest dream coming true.')">
+                    <span class="text-xs font-extrabold text-amber-300 uppercase tracking-widest bg-rose-950 px-3 py-1 rounded-full border border-amber-400/40">Chapter III</span>
+                    <h3 class="font-serif text-2xl font-bold text-white mt-2 mb-2">Our Blessed Nikah</h3>
+                    <p class="text-pink-100 text-sm font-medium leading-relaxed">Promising to love, honor, and cherish you under the shadow of Allah’s immense blessings.</p>
+                    <div class="mt-4 inline-flex items-center text-xs text-amber-300 font-bold group-hover:translate-x-1 transition">
+                        <span>Read memory</span> <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="relative pl-8 md:pl-0 group">
+                <div class="absolute -left-[18px] top-1 w-9 h-9 rounded-full bg-rose-600 border-4 border-slate-950 flex items-center justify-center text-amber-300 text-xs shadow-xl group-hover:scale-125 transition">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <div class="glass-card p-6 rounded-2xl md:w-[calc(50%-30px)] md:mr-auto hover:border-amber-300 transition duration-300 cursor-pointer" onclick="openModal('Everlasting Tomorrow', 'On your birthday Fairu, I re-commit to keeping you happy, supporting your dreams, and praying for us daily.')">
+                    <span class="text-xs font-extrabold text-amber-300 uppercase tracking-widest bg-rose-950 px-3 py-1 rounded-full border border-amber-400/40">Present & Eternity</span>
+                    <h3 class="font-serif text-2xl font-bold text-white mt-2 mb-2">Growing Together Daily</h3>
+                    <p class="text-pink-100 text-sm font-medium leading-relaxed">Building our life day by day with love, trust, and shared prayers. Here is to eternity!</p>
+                    <div class="mt-4 inline-flex items-center text-xs text-amber-300 font-bold group-hover:translate-x-1 transition">
+                        <span>Read memory</span> <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="reasons" class="py-20 px-4 max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="font-cursive text-5xl sm:text-6xl text-amber-200 mb-2 font-bold">10 Reasons Why I Love You</h2>
+            <p class="text-white font-semibold text-sm sm:text-base">Tap any card below to reveal a sweet message, Fairu ❤️</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+            
+            <!-- Card 1 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#1</span>
+                        <i class="fas fa-smile text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Your Gentle Soul</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"Your pure, kind heart and soft demeanor bring peace to my soul."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#2</span>
+                        <i class="fas fa-kaaba text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Your Faith & Iman</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"The way you strive to please Allah inspires me to be a better man every day."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#3</span>
+                        <i class="fas fa-laugh-beam text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Your Cute Laugh</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"Your joyful laughter is my absolute favorite melody in the entire world!"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#4</span>
+                        <i class="fas fa-hands-holding-circle text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Your Tenderness</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"The way you care for me and look after our home is a true blessing."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#5</span>
+                        <i class="fas fa-crown text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Your Elegance</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"You carry yourself with such effortless beauty, modesty, and grace."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#6</span>
+                        <i class="fas fa-house-heart text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">My Tranquility</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"Being beside you brings instant Sakinah (tranquility) to my heart."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#7</span>
+                        <i class="fas fa-coffee text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Our Quiet Moments</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"Even simple tea times and quiet talks with you feel like paradise."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#8</span>
+                        <i class="fas fa-gem text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Your Uniqueness</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"There is no one else like you, Fairu. You are my priceless treasure."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#9</span>
+                        <i class="fas fa-handshake-angle text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Your Patience</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"Your Sabr (patience) and wisdom during challenges strengthen me."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="perspective-1000 h-52 cursor-pointer" onclick="flipCard(this)">
+                <div class="flip-card-inner relative w-full h-full transform-style-3d">
+                    <div class="absolute inset-0 glass-card rounded-2xl flex flex-col items-center justify-center p-4 text-center border-2 border-amber-400/40 backface-hidden">
+                        <span class="font-cursive text-4xl text-amber-300 font-bold mb-1">#10</span>
+                        <i class="fas fa-heart-circle-check text-3xl text-pink-300 mb-2"></i>
+                        <span class="text-xs font-bold text-white">Simply YOU</span>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 via-pink-100 to-white rounded-2xl flex items-center justify-center p-4 text-center backface-hidden rotate-y-180 border-2 border-amber-400 shadow-2xl">
+                        <p class="text-xs text-slate-950 font-extrabold leading-relaxed">"Because you are Fairu—my wife, my best friend, and my whole world."</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="cake" class="py-20 px-4 max-w-3xl mx-auto text-center relative z-10">
+        <div class="glass-card p-8 sm:p-12 rounded-3xl border-2 border-amber-400/50 relative overflow-hidden shadow-2xl">
+            <span class="text-xs font-bold text-amber-300 uppercase tracking-widest bg-black/60 px-4 py-1.5 rounded-full border border-amber-400/30">Celebration Time</span>
+            <h2 class="font-cursive text-5xl sm:text-6xl text-amber-200 mt-3 mb-2 font-bold">Make a Wish, Fairu!</h2>
+            <p class="text-white font-medium text-sm sm:text-base mb-8">Tap the button below to blow out the candles & make a heartfelt prayer!</p>
+
+            <!-- SVG Cake with Lit Candles -->
+            <div class="relative w-48 h-48 sm:w-60 sm:h-60 mx-auto mb-8 flex justify-center items-end">
+                <svg viewBox="0 0 200 200" class="w-full h-full">
+                    <!-- Cake Base -->
+                    <rect x="30" y="120" width="140" height="60" rx="10" fill="#db2777" />
+                    <rect x="40" y="80" width="120" height="45" rx="8" fill="#e11d48" />
+                    <!-- Frosting Drops -->
+                    <path d="M 40,80 Q 55,95 70,80 Q 85,95 100,80 Q 115,95 130,80 Q 145,95 160,80 L 160,90 Q 145,105 130,90 Q 115,105 100,90 Q 85,105 70,90 Q 55,105 40,90 Z" fill="#fbcfe8" />
+                    <path d="M 30,120 Q 50,135 70,120 Q 90,135 110,120 Q 130,135 150,120 Q 170,135 170,120 L 170,130 Q 150,145 130,130 Q 110,145 90,130 Q 70,145 50,130 L 30,130 Z" fill="#fbcfe8" />
+                    
+                    <!-- Candle 1 -->
+                    <rect x="70" y="50" width="8" height="30" fill="#fde047" rx="2"/>
+                    <line x1="74" y1="45" x2="74" y2="50" stroke="#475569" stroke-width="2"/>
+                    <path id="flame1" class="flame" d="M 74 32 Q 80 40 74 46 Q 68 40 74 32 Z" fill="#f97316" />
+
+                    <!-- Candle 2 (Center) -->
+                    <rect x="96" y="42" width="8" height="38" fill="#38bdf8" rx="2"/>
+                    <line x1="100" y1="37" x2="100" y2="42" stroke="#475569" stroke-width="2"/>
+                    <path id="flame2" class="flame" d="M 100 24 Q 106 32 100 38 Q 94 32 100 24 Z" fill="#f97316" />
+
+                    <!-- Candle 3 -->
+                    <rect x="122" y="50" width="8" height="30" fill="#4ade80" rx="2"/>
+                    <line x1="126" y1="45" x2="126" y2="50" stroke="#475569" stroke-width="2"/>
+                    <path id="flame3" class="flame" d="M 126 32 Q 132 40 126 46 Q 120 40 126 32 Z" fill="#f97316" />
+                </svg>
+            </div>
+
+            <button id="blow-btn" onclick="blowCandles()" class="bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 hover:opacity-95 text-white font-extrabold px-8 py-4 rounded-full shadow-2xl border-2 border-amber-300 transition duration-300 transform hover:scale-105 active:scale-95 text-sm sm:text-base">
+                🎂 Blow Out Candles & Make a Dua
+            </button>
+        </div>
+    </section>
+
+    <section id="letter" class="py-20 px-4 max-w-3xl mx-auto relative z-10">
+        <div class="text-center mb-12">
+            <h2 class="font-cursive text-5xl sm:text-6xl text-amber-200 mb-2 font-bold">A Personal Love Letter</h2>
+            <p class="text-white font-semibold text-sm">Click the wax seal to open your birthday letter, Fairu.</p>
+        </div>
+
+        <div class="flex flex-col items-center">
+            
+            <!-- Envelope Container -->
+            <div id="envelope" class="envelope w-72 sm:w-96 h-48 rounded-xl shadow-2xl cursor-pointer relative flex items-center justify-center overflow-hidden border-2 border-amber-400" onclick="toggleLetter()">
+                <div class="envelope-flap"></div>
+                
+                <!-- Wax Seal -->
+                <div id="wax-seal" class="z-20 w-16 h-16 bg-amber-400 rounded-full border-4 border-amber-100 flex items-center justify-center text-rose-950 font-cursive font-extrabold text-3xl shadow-2xl transform transition duration-300 hover:scale-110">
+                    F
+                </div>
+                <p id="envelope-hint" class="absolute bottom-3 text-xs text-amber-200 z-20 font-bold bg-black/60 px-3 py-0.5 rounded-full">Click to Unseal</p>
+            </div>
+
+            <!-- Unfolded Letter Content (High Contrast Dark Text on White Card) -->
+            <div id="letter-content" class="letter hidden mt-6 w-full glass-card-light p-6 sm:p-10 rounded-3xl shadow-2xl border-2 border-rose-300">
+                <div class="border-b-2 border-rose-200 pb-4 mb-6 flex justify-between items-center">
+                    <div>
+                        <span class="font-cursive text-3xl sm:text-4xl font-extrabold text-rose-900">Dearest Fairu,</span>
+                        <p class="text-xs sm:text-sm text-rose-800 font-arabic font-bold mt-1">بَارَكَ اللَّهُ لَكِ وَبَارَكَ عَلَيْكِ</p>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800 bg-rose-100 px-3 py-1 rounded-full border border-rose-300">October 10th</span>
+                </div>
+
+                <div class="space-y-4 font-serif text-base sm:text-lg leading-relaxed text-slate-900 font-medium">
+                    <p>
+                        Happy Birthday to the most cherished gift Allah has ever blessed me with! On this very special day, I want to thank Allah for creating you and bringing you into my destiny.
+                    </p>
+                    <p>
+                        Your smile is a blessing, your gentle presence brings calm to my heart, and your love makes every day brighter. Being your husband is my greatest honor, Fairu.
+                    </p>
+                    <p>
+                        I pray that Allah grants you long life filled with health, immense happiness, peace of mind, and continuous Barakah. May He keep our hearts united in love and piety, guiding us together in this Dunya and reuniting us in Jannah.
+                    </p>
+                    <p class="font-cursive text-3xl text-rose-900 font-extrabold pt-4 text-right">
+                        Forever & Always Your Loving Husband ❤️
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-12 text-center text-xs text-amber-200 font-semibold relative z-10 border-t border-white/10 bg-slate-950/80">
+        <p class="font-arabic text-amber-300 text-base mb-1 font-bold">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
+        <p>Made with endless love & Duas for Fairu | Happy Birthday! ✨</p>
+    </footer>
+
+    <div id="story-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 sm:p-8 rounded-3xl border-2 border-amber-400 text-center relative transform transition-all scale-95 opacity-0" id="modal-box">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-amber-300 hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <i class="fas fa-heart text-4xl text-rose-500 mb-3 animate-pulse"></i>
+            <h3 id="modal-title" class="font-serif text-2xl font-bold text-amber-300 mb-3">Memory Title</h3>
+            <p id="modal-desc" class="text-white text-sm sm:text-base font-medium leading-relaxed mb-6 bg-black/50 p-4 rounded-xl border border-white/10">Memory details...</p>
+            <button onclick="closeModal()" class="bg-gradient-to-r from-rose-700 to-amber-600 text-white text-xs uppercase font-extrabold tracking-wider px-6 py-3 rounded-full border border-amber-300 transition">
+                Close Memory
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartIcons = ['❤️', '💖', '✨', '🌸', '🌙', '⭐'];
+            
+            for (let i = 0; i < 28; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 5 + 6) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 14) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        function updateCountdown() {
+            const now = new Date();
+            let targetYear = now.getFullYear();
+            let targetDate = new Date(targetYear, 9, 10, 0, 0, 0); // Oct 10
+
+            if (now > targetDate && (now.getMonth() !== 9 || now.getDate() !== 10)) {
+                targetDate = new Date(targetYear + 1, 9, 10, 0, 0, 0);
+            }
+
+            if (now.getMonth() === 9 && now.getDate() === 10) {
+                document.getElementById('countdown-heading').innerText = "🎉 TODAY IS FAIRU'S SPECIAL DAY! 🎉";
+            }
+
+            const diff = targetDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        let audioCtx = null;
+        let isPlaying = false;
+        let melodyInterval = null;
+
+        function playMelody() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25, 392.00, 329.63, 349.23, 293.66, 329.63, 261.63];
+            let noteIdx = 0;
+
+            melodyInterval = setInterval(() => {
+                if (!isPlaying) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(notes[noteIdx], audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.2);
+
+                noteIdx = (noteIdx + 1) % notes.length;
+            }, 600);
+        }
+
+        function toggleAudio() {
+            const btnLabel = document.getElementById('audio-label');
+            const btnIcon = document.getElementById('audio-icon');
+
+            if (!isPlaying) {
+                isPlaying = true;
+                playMelody();
+                btnLabel.innerText = "Pause Music";
+                btnIcon.className = "fas fa-pause text-amber-300";
+            } else {
+                isPlaying = false;
+                clearInterval(melodyInterval);
+                btnLabel.innerText = "Play Soft Melody";
+                btnIcon.className = "fas fa-music text-amber-300";
+            }
+        }
+
+        function flipCard(cardElement) {
+            const inner = cardElement.querySelector('.flip-card-inner');
+            inner.classList.toggle('flipped');
+        }
+
+        function openModal(title, desc) {
+            const modal = document.getElementById('story-modal');
+            const box = document.getElementById('modal-box');
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.remove('scale-95', 'opacity-0');
+                box.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('story-modal');
+            const box = document.getElementById('modal-box');
+            box.classList.remove('scale-100', 'opacity-100');
+            box.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        function blowCandles() {
+            const flames = ['flame1', 'flame2', 'flame3'];
+            flames.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
+
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 140,
+                    spread: 85,
+                    origin: { y: 0.6 }
+                });
+                
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 90,
+                        angle: 60,
+                        spread: 60,
+                        origin: { x: 0 }
+                    });
+                    confetti({
+                        particleCount: 90,
+                        angle: 120,
+                        spread: 60,
+                        origin: { x: 1 }
+                    });
+                }, 300);
+            }
+
+            const btn = document.getElementById('blow-btn');
+            btn.innerText = "✨ Ameen! Happy Birthday Fairu! 🎉";
+            btn.className = "bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-extrabold px-8 py-4 rounded-full shadow-2xl border-2 border-amber-300 transition duration-300";
+        }
+
+        function toggleLetter() {
+            const envelope = document.getElementById('envelope');
+            const letterContent = document.getElementById('letter-content');
+            const waxSeal = document.getElementById('wax-seal');
+            const hint = document.getElementById('envelope-hint');
+
+            envelope.classList.add('open');
+            waxSeal.style.opacity = '0';
+            hint.style.opacity = '0';
+
+            setTimeout(() => {
+                letterContent.classList.remove('hidden');
+                letterContent.scrollIntoView({ behavior: 'smooth' });
+            }, 600);
+        }
+    </script>
+</body>
+</html>
